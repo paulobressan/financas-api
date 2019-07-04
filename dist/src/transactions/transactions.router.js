@@ -7,6 +7,9 @@ class TransactionRouter extends model_router_1.ModelRouter {
     constructor() {
         super(transactions_model_1.Transaction);
     }
+    prepareAll(query) {
+        return query.populate("category");
+    }
     apply(application) {
         application.get(`${this.basePath}`, this.findAll);
         application.post(`${this.basePath}`, this.validateSchema(transactions_schema_1.transactionsSchemaSave), this.save);

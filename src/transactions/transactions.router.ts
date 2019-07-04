@@ -3,10 +3,17 @@ import { ModelRouter } from "../../common/model-router";
 import { authorize } from "../security/auth.handler";
 import { Transaction } from "./transactions.model";
 import { transactionsSchemaSave } from "./transactions.schema";
+import * as mongoose from "mongoose";
 
 class TransactionRouter extends ModelRouter<Transaction> {
   constructor() {
     super(Transaction);
+  }
+
+  protected prepareAll(
+    query: mongoose.DocumentQuery<Transaction[], Transaction>
+  ): mongoose.DocumentQuery<Transaction[], Transaction> {
+    return query.populate("category");
   }
 
   apply(application: express.Application): void {
