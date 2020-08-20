@@ -35,7 +35,7 @@
   "author": "Paulo Bressan",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.2",
+    "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-pino-logger": "^4.0.0",
